@@ -17,6 +17,7 @@ CREDENTIALS_JSON = json.loads(base64.b64decode(os.getenv("CREDENTIALS_JSON_BASE6
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/public", StaticFiles(directory="public"), name="public")
+gc = gspread.service_account_from_dict(CREDENTIALS_JSON)
 
 @app.get("/", response_class=HTMLResponse)
 def read_root(request: Request):
@@ -24,9 +25,6 @@ def read_root(request: Request):
 
 @app.get("/sheet/{sheet_id}/{sheet_name}")
 def read_sheet(sheet_id: str, sheet_name: str):
-    gc = gspread.service_account_from_dict(CREDENTIALS_JSON)
-    print("sheet_id", sheet_id)
-    print("sheet_name", sheet_name)
     sht1 = gc.open_by_key(sheet_id)
     sheet = sht1.worksheet(sheet_name)
     data = sheet.get_all_values()
