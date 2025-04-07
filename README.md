@@ -14,7 +14,7 @@ Transform your Google Sheets into a powerful REST API backend with just a few cl
 ## Quick Start
 
 1. Share your Google Sheet with the service account email provided on the homepage
-2. Make API calls to your sheet data using the following endpoint:
+2. Make API calls to your sheet data:
 
 ```bash
 curl -X GET "https://google-sheets-backend.canine.sh/sheet/{your-sheet-id}/{your-sheet-name}"
@@ -22,16 +22,13 @@ curl -X GET "https://google-sheets-backend.canine.sh/sheet/{your-sheet-id}/{your
 
 ## API Response Format
 
-The API returns data in the following JSON format:
-
 ```json
 {
   "data": [
     {
       "column1": "value1",
       "column2": "value2"
-    },
-    ...
+    }
   ]
 }
 ```

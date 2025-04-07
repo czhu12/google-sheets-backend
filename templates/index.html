@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Sheets Backend | Turn Your Spreadsheets into APIs</title>
     <meta name="description" content="Transform your Google Sheets into a powerful REST API backend. Share your sheet, and start making API calls instantly. Perfect for developers and businesses.">
     <meta property="og:title" content="Google Sheets Backend | Turn Your Spreadsheets into APIs">
@@ -19,11 +21,11 @@
         </div>
     </nav>
 
-    <div class="hero bg-primary text-white py-5">
+    <div class="hero bg-primary text-white py-4 py-md-5">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4">Turn Google Sheets into a REST API</h1>
+                <div class="col-12 col-lg-6 text-center text-lg-start">
+                    <h1 class="display-4 fs-2 fs-md-1">Turn Google Sheets into a REST API</h1>
                     <p class="lead">Transform your Google Sheets into a powerful backend with just a few clicks.</p>
                     <a href="#get-started" class="btn btn-light btn-lg">Get Started</a>
                 </div>
@@ -31,23 +33,25 @@
         </div>
     </div>
 
-    <div class="container py-5" id="get-started">
+    <div class="container py-4 py-md-5" id="get-started">
         <h2 class="text-center mb-4">Getting Started</h2>
-        <div class="row">
-            <div class="col-12 mb-4">
+        <div class="row g-3">
+            <div class="col-12">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">1. Share Your Sheet</h5>
-                        <p class="card-text">Share your Google Sheet with our service account email <pre class="d-inline">{{ service_account_email }}</pre></p>
-                        <video src="/public/demo/share.mp4" autoplay loop muted playsinline class="w-100 rounded mt-3"></video>
+                        <p class="card-text">Share your Google Sheet with our service account email</p>
+                        <pre class="bg-light p-2 rounded overflow-auto mb-3">{{ service_account_email }}</pre>
+                        <video src="/public/demo/share.mp4" autoplay loop muted playsinline class="w-100 rounded mt-3" style="max-width: 100%; height: auto;"></video>
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-4">
+            <div class="col-12">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">2. Make API Calls</h5>
                         <p class="card-text">Start making REST API calls to your Google Sheet data.</p>
+                        <video src="/public/demo/load.mp4" autoplay loop muted playsinline class="w-100 rounded mt-3" style="max-width: 100%; height: auto;"></video>
                     </div>
                 </div>
             </div>
@@ -58,7 +62,7 @@
         <h3 class="text-center mb-4">Test Your Setup</h3>
         <div class="card">
             <div class="card-body">
-                <pre><code class="language-bash">curl -X GET "https://google-sheets-backend.canine.sh/sheet/{your-sheet-id}/{your-sheet-name}"</code></pre>
+                <pre class="overflow-auto"><code class="language-bash">curl -X GET "https://google-sheets-backend.canine.sh/sheet/{your-sheet-id}/{your-sheet-name}"</code></pre>
             </div>
         </div>
     </div>
