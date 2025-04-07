@@ -7,9 +7,12 @@ from fastapi.responses import HTMLResponse
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
+import json
+import base64
 
 load_dotenv()
 SERVICE_ACCOUNT_EMAIL = os.getenv("SERVICE_ACCOUNT_EMAIL")
+CREDENTIALS_JSON = json.loads(base64.b64decode(os.getenv("CREDENTIALS_JSON_BASE64")).decode('utf-8'))
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -21,7 +24,7 @@ def read_root(request: Request):
 
 @app.get("/sheet/{sheet_id}/{sheet_name}")
 def read_sheet(sheet_id: str, sheet_name: str):
-    gc = gspread.service_account('./credentials/personal-310102-924dafe7cd38.json')
+    gc = gspread.service_account_from_dict(CREDENTIALS_JSON)
     print("sheet_id", sheet_id)
     print("sheet_name", sheet_name)
     sht1 = gc.open_by_key(sheet_id)
