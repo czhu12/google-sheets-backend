@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import json
 import base64
@@ -15,6 +16,13 @@ SERVICE_ACCOUNT_EMAIL = os.getenv("SERVICE_ACCOUNT_EMAIL")
 CREDENTIALS_JSON = json.loads(base64.b64decode(os.getenv("CREDENTIALS_JSON_BASE64")).decode('utf-8'))
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 templates = Jinja2Templates(directory="templates")
 app.mount("/public", StaticFiles(directory="public"), name="public")
 gc = gspread.service_account_from_dict(CREDENTIALS_JSON)
